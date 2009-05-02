@@ -1,0 +1,10 @@
+Wrapper for chipmunk 2d physics engine
+http://code.google.com/p/chipmunk-physics/
+
+
+HOWTO:
+ * Add the chipmunk source to your project (http://chipmunk-physics.googlecode.com/svn/trunk/src/)
+ * Add the wrapper to your project 
+
+TODO:
+ * Constraints are not wrapped yet
