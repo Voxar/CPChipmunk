@@ -10,8 +10,16 @@
 
 
 @implementation CPConstraint
+@synthesize cp;
 
+-(id)initWithConstraint:(cpConstraint *)_cp;
+{
+  if(![super init]) return nil;
+  
+  cp = _cp;
+  
+  return self;
+}
 
--(cpConstraint*)cp; { return cp; }
 
 @end

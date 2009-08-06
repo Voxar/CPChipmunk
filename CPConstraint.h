@@ -14,6 +14,8 @@
   cpConstraint *cp;
 }
 
+-(id)initWithConstraint:(cpConstraint *)cp;
+
 @property (nonatomic, readonly) cpConstraint *cp;
 
 @end

@@ -37,7 +37,8 @@
 
 -(id)initWithMass:(cpFloat)mass moment:(cpFloat)moment;
 -(id)initWithMass:(cpFloat)mass momentForCircleWithRadius:(cpFloat)r1 innerRadius:(cpFloat)r2 offset:(cpVect)offset;
-
+-(id)initWithMass:(cpFloat)mass momentForPolyWithVerts:(cpVect*)verts numVerts:(int)numVerts offset:(cpVect)offset;
+-(id)initWithMass:(cpFloat)mass momentForSegmentWithPoint:(cpVect)a and:(cpVect)b;
 
 //Integration Functions
 //=====================

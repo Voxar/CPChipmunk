@@ -15,6 +15,8 @@
 #import "CPConstraint.h"
 #import "CPPolyShape.h"
 
+#import "CPSimpleMotor.h"
+
 
 @interface CPChipmunk : NSObject {
 
