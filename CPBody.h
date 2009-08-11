@@ -30,10 +30,6 @@
 @property (nonatomic, readonly) cpVect rotation;
 
 
-//Creates a body be used to create static shapes. Do not add to space!
-+(CPBody*)bodyWithInfinity;
-+(CPBody*)staticBody; //shared!
-
 
 -(id)initWithMass:(cpFloat)mass moment:(cpFloat)moment;
 -(id)initWithMass:(cpFloat)mass momentForCircleWithRadius:(cpFloat)r1 innerRadius:(cpFloat)r2 offset:(cpVect)offset;

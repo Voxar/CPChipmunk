@@ -12,19 +12,6 @@
 @implementation CPBody
 
 @synthesize data;
-
-+(CPBody*)staticBody;
-{
-  static CPBody *staticBody = [[CPBody alloc] initWithMass:INFINITY moment:INFINITY];
-  return staticBody;
-}
-
-+(CPBody*)bodyWithInfinity;
-{
-  return [[[CPBody alloc] initWithMass:INFINITY moment:INFINITY] autorelease];
-}
-
-
 -(id)initWithMass:(cpFloat)mass moment:(cpFloat)moment;
 {
   if((self = [super init])){

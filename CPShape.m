@@ -133,7 +133,7 @@
 {
   float w = width/2.0;
   float h = height/2.0;
-  static cpVect verts[] = {
+  cpVect verts[] = {
 		cpv(-w,-h),
 		cpv(-w, h),
 		cpv( w, h),
