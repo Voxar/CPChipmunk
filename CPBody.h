@@ -10,11 +10,23 @@
 
 #import "chipmunk.h"
 
+@class CPBody;
+
+@protocol CPBodyDelegate
+@optional 
+-(void)integrateVelocityForBody:(CPBody*)b gravity:(cpVect)gravity damping:(cpFloat)damping delta:(cpFloat)dt;
+-(void)integratePositionForBody:(CPBody*)b delta:(cpFloat)dt;
+@end
+
+
+
 @interface CPBody : NSObject {
   cpBody *cp;
   NSObject *data;
+  id<NSObject, CPBodyDelegate> delegate;
 }
 
+@property (nonatomic, assign) id<NSObject, CPBodyDelegate> delegate;
 @property (nonatomic, retain) NSObject *data;
 
 @property (nonatomic, readonly) cpBody *cp;

@@ -9,9 +9,24 @@
 #import "CPBody.h"
 
 
+void bodyVelocityFunc(struct cpBody *b, cpVect gravity, cpFloat damping, cpFloat dt)
+{
+  CPBody *body = (CPBody*)b->data;
+  if([body.delegate respondsToSelector:@selector(integrateVelocityForBody:gravity:damping:delta:)])
+    [body.delegate integrateVelocityForBody:body gravity:gravity damping:damping delta:dt];
+}
+
+void bodyPositionFunc(struct cpBody *b, cpFloat dt)
+{
+  CPBody *body = (CPBody*)b->data;
+  if([body.delegate respondsToSelector:@selector(integratePositionForBody:delta:)])
+    [body.delegate integratePositionForBody:body delta:dt];
+}
+
+
 @implementation CPBody
 
-@synthesize data;
+@synthesize delegate, data;
 -(id)initWithMass:(cpFloat)mass moment:(cpFloat)moment;
 {
   if((self = [super init])){
@@ -138,5 +153,18 @@
   //cpDampedSpring(cp, b, anchr1, anchr2, rlen, k, dmp, dt);
 }
 
+-(void)setDelegate:(id<NSObject, CPBodyDelegate>)newDelegate;
+{
+  if(delegate){
+    cp->velocity_func = cpBodyUpdateVelocity;
+    cp->position_func = cpBodyUpdatePosition;
+  }
+  delegate = newDelegate;
+
+  if([delegate respondsToSelector:@selector(integrateVelocityForBody:gravity:damping:delta:)])
+    cp->velocity_func = bodyVelocityFunc;
+  if([delegate respondsToSelector:@selector(integratePositionForBody:delta:)])
+    cp->position_func = bodyPositionFunc;
+}
 
 @end
